@@ -10,10 +10,8 @@
 #include <sstream> 
 #include <string>
 #include <random>
-//#include <stb/stb_image.h>
 
 using namespace std;
-
 
 const GLuint FRAME_RATE = 100;
 float BALL_SCALE = 10.0;
@@ -26,7 +24,6 @@ const float gravity = -9.81;
 static bool paused = false;
 
 bool fullScreen = 0;
-
 
 class ball1 {
 public:
@@ -48,6 +45,7 @@ public:
 
     void RandColor();
 };
+
 static list<ball1> balls1;
 
 
@@ -201,15 +199,7 @@ double compute_angle_after_collision(double angle_ball, double angle_wall) {
     return new_angle;
 }
 
-//Background Image
-/*
-int widthImg, heightImg, numColCh;
-unsigned char* bytes = stbi_load()*/
-
-
-
-void draw_scene()
-{
+void draw_scene() {
     glPushMatrix();
     glColor3f(1.0, 1.0, 1.0); //farge på linje
     glTranslatef(10.0, 10.0, 0.0);
@@ -242,63 +232,7 @@ void draw_scene()
     glColor3f(1, 1, 1);
     drawText(textF.data(), textF.size(), 175, 20); //text position
 
-    // string text5;
-    // text5 = "5"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text5.data(), text5.size(), 7.5, 90); //text position
-
-    // string text10;
-    // text10 = "10"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text10.data(), text10.size(), 7.5, 132.5); //text position
-
-    // string text15;
-    // text15 = "15"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text15.data(), text15.size(), 7.5, 175); //text position
-
-    // string text20;
-    // text20 = "20"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text20.data(), text20.size(), 7.5, 217.5); //text position
-
-    // string text25;
-    // text25 = "25"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text25.data(), text25.size(), 7.5, 260); //text position
-
-    // string text30;
-    // text30 = "30"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text30.data(), text30.size(), 7.5, 302.5); //text position
-
-    // string text35;
-    // text35 = "35"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text35.data(), text35.size(), 7.5, 345); //text position
-
-    // string text40;
-    // text40 = "40"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text40.data(), text40.size(), 7.5, 387.5); //text position
-
-    // string text45;
-    // text45 = "45"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text45.data(), text45.size(), 7.5, 430); //text position
-
-    // string text50;
-    // text50 = "50"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text50.data(), text50.size(), 7.5, 472.5); //text position
-
-    // string text55;
-    // text55 = "55"; //text output
-    // glColor3f(1, 1, 1);
-    // drawText(text55.data(), text55.size(), 7.5, 515); //text position
-
 // graph horizontal lines
-//void Rendering::draw_graph_value(double width, double height) {
 	double y_val = 90;
 	string text5;
 	text5 = "5"; //text output
@@ -420,7 +354,6 @@ void draw_scene()
 	glVertex2f(50, y_val * 1.5);
 	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
-// }
 
 
     //Check collisions with walls
@@ -438,31 +371,6 @@ void draw_scene()
                 << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
             string output = buffer.str();
             glColor3f(1, 0, 0);
-            /*string textT;
-            string textT1;
-            textT = "Time: ";
-            textT1 = i->timer, setprecision(2);
-            drawText(textT.data(), textT.size(), 600, 575);
-            drawText(textT1.data(), textT1.size(), 660, 575);
-            string textP;
-            string textPx;
-            string textPy;
-            textP = "Position: (";
-            textPx = i->ballX, setprecision(2);
-            textPy = i->ballY, setprecision(2);
-            drawText(textP.data(), textP.size(), 600, 560);
-            drawText(textPx.data(), textPx.size(), 660, 560);
-            drawText(textPy.data(), textPy.size(), 720, 560);
-            string textV;
-            string textVx;
-            string textVy;
-            textV = "Velocity: (";
-            textVx = i->velocityX, setprecision(2);
-            textVy = i->velocityY, setprecision(2);
-            drawText(textV.data(), textV.size(), 600, 545);
-            drawText(textVx.data(), textVx.size(), 660, 545);
-            drawText(textVy.data(), textVy.size(), 720, 545);
-            */
 
             drawText(output.data(), output.size(), 350, 20);
         }
@@ -534,11 +442,6 @@ void init_scene()
 
 void make_display_lists()
 {
-    /*std::random_device rd;
-    std::default_random_engine generator(rd()); // rd() provides a random seed
-    std::uniform_real_distribution<double> distribution(0.0, 0.4);
-
-    double number = distribution(generator);*/
 
     DisplayListsBase = glGenLists(DL_MAX);
     glNewList(DisplayListsBase + DL_HEIGHTLINE, GL_COMPILE);
@@ -631,24 +534,12 @@ void keyboard(unsigned char key, int x, int y)
         exit(EXIT_SUCCESS);
     }
 
-    /*if (key == 'p' || key == 'P')
-    {
-        paused = !paused;
-    }*/
 
     if (key == 'f' || key == 'F')
     {
         glutFullScreen();
     }
 
-    /*if (key == 'f' || key == 'F') {
-        glutFullScreen();
-        fullScreen = 1;
-        if (fullScreen = 1) {
-            glutReshapeWindow(1400, 700);
-            glutPositionWindow(0, 0);
-        }
-    }*/
 }
 
 
