@@ -307,7 +307,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 
@@ -319,7 +319,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 175;
@@ -330,7 +330,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 217.5;
@@ -341,7 +341,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 260;
@@ -352,7 +352,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 302.5;
@@ -363,7 +363,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 345;
@@ -374,7 +374,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 387.5;
@@ -385,7 +385,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 430;
@@ -396,7 +396,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 472.5;
@@ -407,7 +407,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 
 	y_val = 515;
@@ -418,7 +418,7 @@ void draw_scene()
 	glBegin(GL_LINES);
 	glColor3f(0.5, 0.5, 0.5);
 	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
+	glVertex2f(WindowWidth, y_val * 1.5);
 	glEnd();
 // }
 
