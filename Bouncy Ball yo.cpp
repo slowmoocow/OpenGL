@@ -20,8 +20,10 @@ int dropHeight = 500;
 int dropPosFromWall = 0;
 
 const float gravity = -9.81;
-float airDensity = 1.2;
-float sphereDragCoaficiant = 0.47;
+float airDensity = 1;
+float sphereDragCoefficient = 0.47;
+
+float footballRadius = 0.11; // m
 
 static bool paused = false;
 bool fullScreen = 0;
@@ -44,10 +46,10 @@ public:
     double accelerationY = gravity;
 
     float area = 2 * M_PI * (footballRadius * footballRadius);
-    double airRecistanceCoeficiant = (airDensity * sphereDragCoaficiant * area) / 2;
-    double Vt = sqrt((mass * abs(gravity)) / airRecistanceCoeficiant);
+    double airRecistanceCoefficient = (airDensity * sphereDragCoefficient * area) / 2;
+    double Vt = sqrt((mass * abs(gravity)) / airRecistanceCoefficient);
 
-    int timer;
+    int timerX, timerY;
 
     void RandColor();
 };
@@ -365,39 +367,48 @@ void draw_scene() {
     for (auto i = balls1.begin(); i != balls1.end(); i++) {
 
         if (i->ballY > BALL_SCALE + 60) {
-            i->velocityY = i->Vt * tanh((gravity * i->timer * 0.01) / i->Vt);
+            i->accelerationY = ((gravity * i->mass) + (i->airRecistanceCoefficient * i->velocityY * i->velocityY)) / i->mass;
+            i->velocityY = i->accelerationY * i->timerY * 0.01 + i->v0Y;                                                            //i->velocityY = i->v0Y + (i->Vt * tanh((gravity * i->timerY * 0.01) / i->Vt));
             i->ballY += i->velocityY;
-            cout << fixed << setprecision(2) << "Time:" << i->timer * 0.01 << "s" //print til console
-                << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
-                << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)" << endl;
-            stringstream buffer;
-            buffer << fixed << setprecision(2) << "Time:" << i->timer * 0.01 << "s" //cout til string
-                << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
-                << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
-            string output = buffer.str();
-            glColor3f(1, 0, 0);
-
-            drawText(output.data(), output.size(), 350, 20);
+            i->timerY++;
         }
-
 
         else {
             i->v0Y = fabs(i->velocityY);
-            i->timer = 0;
+            i->timerY = 0;
             i->angle = compute_angle_after_collision(i->angle, 0.0);
             i->ballY += i->v0Y;
         }
 
-        i->timer++;
+        if (i->ballX > BALL_SCALE + 60) {
+            i->accelerationX = -(i->airRecistanceCoefficient * i->velocityX * i->velocityX) / i->mass;
+            i->velocityX = i->accelerationX * i->timerX * 0.01 + i->v0X;
+            i->ballX += i->v0X;
+            i->timerX++;
+        }
 
-        if (i->ballX < BALL_SCALE + 60) {
+        else {
+            i->v0X = fabs(i->velocityX);
+            i->timerX = 0;
             i->angle = compute_angle_after_collision(i->angle, 90.0);
-            i->velocityX = fabs(i->v0X);
-            i->ballX += i->velocityX;
+            i->ballX += i->v0X;
         }
 
         if (i->ballX < 0 || i->ballX > WindowWidth || i->ballY < 0 || i->ballY > WindowHeight) //sletter ball når den exiter vinduet
             to_erase.push_back(i);
+
+
+        cout << fixed << setprecision(2) << "Time:" << i->timerY * 0.01 << "s" //print til console
+            << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
+            << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)" << endl;
+        stringstream buffer;
+        buffer << fixed << setprecision(2) << "Time:" << i->timerY * 0.01 << "s" //cout til string
+            << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
+            << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
+        string output = buffer.str();
+        glColor3f(1, 0, 0);
+        drawText(output.data(), output.size(), 350, 20);
+
 
         //check collisions with other balls
         for (auto j = balls1.begin(); j != balls1.end(); j++) {
@@ -517,7 +528,8 @@ void mouse(int button, int state, int x, int y)
         m.ballX = CentreX;
         m.ballY = CentreY;
         m.angle = compute_angle(CentreX, CentreY, CentreX, CentreY); //compute_angle(CentreX, CentreY, CursorX, CursorY)
-        m.timer = 0;
+        m.timerX = 0;
+        m.timerY = 0;
         balls1.push_back(m);
     }
 }
