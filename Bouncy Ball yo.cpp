@@ -20,9 +20,10 @@ int dropHeight = 500;
 int dropPosFromWall = 0;
 
 const float gravity = -9.81;
+float airDensity = 1.2;
+float sphereDragCoaficiant = 0.47;
 
 static bool paused = false;
-
 bool fullScreen = 0;
 
 class ball1 {
@@ -32,6 +33,7 @@ public:
     double ballX;
     double ballY;
     double radius;
+    float mass = 0.45; //kg
 
     double angle;
     double v0X = 1.0;
@@ -41,11 +43,14 @@ public:
     double accelerationX;
     double accelerationY = gravity;
 
+    float area = 2 * M_PI * (footballRadius * footballRadius);
+    double airRecistanceCoeficiant = (airDensity * sphereDragCoaficiant * area) / 2;
+    double Vt = sqrt((mass * abs(gravity)) / airRecistanceCoeficiant);
+
     int timer;
 
     void RandColor();
 };
-
 static list<ball1> balls1;
 
 
@@ -360,7 +365,7 @@ void draw_scene() {
     for (auto i = balls1.begin(); i != balls1.end(); i++) {
 
         if (i->ballY > BALL_SCALE + 60) {
-            i->velocityY = i->accelerationY * i->timer * 0.01 + i->v0Y;
+            i->velocityY = i->Vt * tanh((gravity * i->timer * 0.01) / i->Vt);
             i->ballY += i->velocityY;
             cout << fixed << setprecision(2) << "Time:" << i->timer * 0.01 << "s" //print til console
                 << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
@@ -416,7 +421,7 @@ void draw_scene() {
         glColor3f(i->r, i->g, i->b);
         glTranslatef(i->ballX, i->ballY, 0.0);
         glRotatef(i->angle, 0.0, 0.0, 1.0);
-        glScalef(100, 100, 1.0);
+        glScalef(1.0, 1.0, 1.0);
         glCallList(DisplayListsBase + DL_BALL);
         glPopMatrix();
     }
@@ -456,7 +461,7 @@ void make_display_lists()
     glEndList();
     glNewList(DisplayListsBase + DL_BALL, GL_COMPILE);
     glPushMatrix();
-    DrawBall(100, 0, 0, 0.2, 0);
+    DrawBall(100, 0, 0, 10, 0);
     glPopMatrix();
     glEndList();
 }
