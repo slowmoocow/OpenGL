@@ -42,3 +42,6 @@
 *.opendb
 *.db-wal
 *.sln
+
+**/x64
+.suo
