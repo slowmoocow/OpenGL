@@ -211,7 +211,7 @@ unsigned char* bytes = stbi_load()*/
 void draw_scene()
 {
     glPushMatrix();
-    glColor3f(1.0, 1.0, 1.0); //farge pÃ¥ linje
+    glColor3f(1.0, 1.0, 1.0); //farge på linje
     glTranslatef(10.0, 10.0, 0.0);
     glScalef(10.0, 10.0, 1.0);
     glCallList(DisplayListsBase + DL_HEIGHTLINE);
@@ -299,131 +299,133 @@ void draw_scene()
 
 // graph horizontal lines
 //void Rendering::draw_graph_value(double width, double height) {
-	double y_val = 90;
-	string text5;
-	text5 = "5"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text5.data(), text5.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
+    double y_val = 90;
+	
+    string text5;
+    text5 = "5"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text5.data(), text5.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(50, y_val * 1.5);
+    glEnd();
+
+	
+
+    y_val = 132.5;
+    string text10;
+    text10 = "10"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text10.data(), text10.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 175;
+    string text15;
+    text15 = "15"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text15.data(), text15.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 217.5;
+    string text20;
+    text20 = "20"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text20.data(), text20.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 260;
+    string text25;
+    text25 = "25"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text25.data(), text25.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 302.5;
+    string text30;
+    text30 = "30"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text30.data(), text30.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 345;
+    string text35;
+    text35 = "35"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text35.data(), text35.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 387.5;
+    string text40;
+    text40 = "40"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text40.data(), text40.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 430;
+    string text45;
+    text45 = "45"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text45.data(), text45.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 472.5;
+    string text50;
+    text50 = "50"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text50.data(), text50.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+
+    y_val = 515;
+    string text55;
+    text55 = "55"; //text output
+    glColor3f(1, 1, 1);
+    drawText(text55.data(), text55.size(), 7.5, y_val); //text position
+    glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
+    glVertex2f(50, y_val * 1.5);
+    glVertex2f(WindowWidth, y_val * 1.5);
+    glEnd();
+    // }
 
 
-	y_val = 132.5;
-	string text10;
-	text10 = "10"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text10.data(), text10.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 175;
-	string text15;
-	text15 = "15"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text15.data(), text15.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 217.5;
-	string text20;
-	text20 = "20"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text20.data(), text20.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 260;
-	string text25;
-	text25 = "25"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text25.data(), text25.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 302.5;
-	string text30;
-	text30 = "30"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text30.data(), text30.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 345;
-	string text35;
-	text35 = "35"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text35.data(), text35.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 387.5;
-	string text40;
-	text40 = "40"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text40.data(), text40.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 430;
-	string text45;
-	text45 = "45"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text45.data(), text45.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 472.5;
-	string text50;
-	text50 = "50"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text50.data(), text50.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-
-	y_val = 515;
-	string text55;
-	text55 = "55"; //text output
-	glColor3f(1, 1, 1);
-	drawText(text55.data(), text55.size(), 7.5, y_val); //text position
-	glBegin(GL_LINES);
-	glColor3f(0.5, 0.5, 0.5);
-	glVertex2f(50, y_val * 1.5);
-	glVertex2f(width, y_val * 1.5);
-	glEnd();
-// }
-
-
-    //Check collisions with walls
+        //Check collisions with walls
     for (auto i = balls1.begin(); i != balls1.end(); i++) {
 
         if (i->ballY > BALL_SCALE + 60) {
@@ -483,7 +485,7 @@ void draw_scene()
             i->ballX += i->velocityX;
         }
 
-        if (i->ballX < 0 || i->ballX > WindowWidth || i->ballY < 0 || i->ballY > WindowHeight) //sletter ball nÃ¥r den exiter vinduet
+        if (i->ballX < 0 || i->ballX > WindowWidth || i->ballY < 0 || i->ballY > WindowHeight) //sletter ball når den exiter vinduet
             to_erase.push_back(i);
 
         //check collisions with other balls
