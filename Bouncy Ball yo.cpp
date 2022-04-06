@@ -13,20 +13,28 @@
 
 using namespace std;
 
-const GLuint FRAME_RATE = 100;
-float BALL_SCALE = 10.0;
+const GLuint FRAME_RATE = 100;     
+static bool paused = false;
+bool fullScreen = 0;
+float BALL_SCALE = 10.0;            // Scales bouth ball size and collision logic
 
-int dropHeight = 500;
-int dropPosFromWall = 0;
+
+int dropPosHeight = 500;            //Height of which the ball is dropped
+int dropPosFromWall = 0;            //Distance from the wall where the ball is dropped
 
 const float gravity = -9.81;
 float airDensity = 1;
-float sphereDragCoefficient = 0.47;
+float sphereDragCoefficient = 0.47; //Standard Coefficient for sphere
 
-float footballRadius = 0.11; // m
+float footballRadius = 0.11;
+float footballWeight = 0.45;
 
-static bool paused = false;
-bool fullScreen = 0;
+float bowlingballRdius = 0.108;
+float bowlingballWeight = 4.0;
+
+
+float chosenBallRadius = footballRadius;
+float chosenBallWeight = footballWeight;
 
 class ball1 {
 public:
@@ -35,7 +43,7 @@ public:
     double ballX;
     double ballY;
     double radius;
-    float mass = 0.45; //kg
+    float mass = chosenBallWeight; //kg
 
     double angle;
     double v0X = 1.0;
@@ -43,19 +51,21 @@ public:
     double velocityX = v0X; //hastighet i x retning
     double velocityY = v0Y; //hastighet i y retning
     double accelerationX;
-    double accelerationY = gravity;
+    double accelerationY;
 
-    float area = 2 * M_PI * (footballRadius * footballRadius);
+    float area = 2 * M_PI * (chosenBallRadius * chosenBallRadius);
     double airRecistanceCoefficient = (airDensity * sphereDragCoefficient * area) / 2;
     double Vt = sqrt((mass * abs(gravity)) / airRecistanceCoefficient);
 
     int timerX, timerY;
+    int ballTimer;
 
     void RandColor();
 };
 static list<ball1> balls1;
 
 
+//Randomizes the color for the balls that are spawned
 void ball1::RandColor() {
     float color[3];
     srand(static_cast <unsigned> (time(0)));
@@ -64,7 +74,6 @@ void ball1::RandColor() {
     }
     r = color[0], g = color[1], b = color[2];
 }
-
 
 void DrawBall(int segments, double ballX, double ballY, double radius, double angle) {
     glBegin(GL_TRIANGLE_FAN);
@@ -175,6 +184,17 @@ void draw_line() {
 }
 
 
+void draw_crosshair()
+{
+    glBegin(GL_LINES);
+    glVertex2f(-1.5, 0.0);
+    glVertex2f(1.5, 0.0);
+    glVertex2f(0.0, 1.5);
+    glVertex2f(0.0, -1.5);
+    glEnd();
+}
+
+
 double compute_angle(double a_x, double a_y, double b_x, double b_y)
 {
     double angle = 0.0;
@@ -197,7 +217,6 @@ double normalize_angle(double angle) {
 }
 
 
-
 double compute_angle_after_collision(double angle_ball, double angle_wall) {
     double rotation = -angle_wall;
     double rotated_angle_ball = normalize_angle(angle_ball + rotation);
@@ -205,6 +224,7 @@ double compute_angle_after_collision(double angle_ball, double angle_wall) {
     double new_angle = normalize_angle(rotated_new_angle - rotation);
     return new_angle;
 }
+
 
 void draw_scene() {
     glPushMatrix();
@@ -398,30 +418,16 @@ void draw_scene() {
             to_erase.push_back(i);
 
 
-        cout << fixed << setprecision(2) << "Time:" << i->timerY * 0.01 << "s" //print til console
+        cout << fixed << setprecision(2) << "Time:" << (clock()-i->ballTimer) * 0.001 << "s" //print til console
             << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
-            << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)" << endl;
+            << " | Vel x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)" << endl;
         stringstream buffer;
-        buffer << fixed << setprecision(2) << "Time:" << i->timerY * 0.01 << "s" //cout til string
+        buffer << fixed << setprecision(2) << "Time:" << (clock() - i->ballTimer) * 0.001 << "s" //cout til string
             << " | Position: (x = " << i->ballX << ", y = " << i->ballY << ")"
-            << " | Velocity x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
+            << " | Vel x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
         string output = buffer.str();
         glColor3f(1, 0, 0);
         drawText(output.data(), output.size(), 350, 20);
-
-
-        //check collisions with other balls
-        for (auto j = balls1.begin(); j != balls1.end(); j++) {
-            if (i != j && (fabs((i->ballX - j->ballX) * (i->ballX - j->ballX) +
-                (i->ballY - j->ballY) * (i->ballY - j->ballY))) <=
-                4.0 * BALL_SCALE * BALL_SCALE) {
-                double angle_centerline = compute_angle(i->ballX, i->ballY, j->ballX, j->ballY);
-                double angle_wall = normalize_angle(angle_centerline + 90.0);
-                double new_angle =
-                    compute_angle_after_collision(i->angle, angle_wall);
-                i->angle = new_angle;
-            }
-        }
 
     }
     for (auto i = balls1.begin(); i != balls1.end(); i++)
@@ -446,7 +452,7 @@ void init_scene()
     glClearColor(0, 0, 0, 0);
     glutSetCursor(GLUT_CURSOR_NONE);
     CentreX = dropPosFromWall + 200; //X-posisjon som ball droppes fra
-    CentreY = dropHeight + 80; //Y-posisjon som ball droppes fra
+    CentreY = dropPosHeight + 80; //Y-posisjon som ball droppes fra
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, WindowWidth, 0, WindowHeight);
@@ -467,7 +473,7 @@ void make_display_lists()
     glEndList();
     glNewList(DisplayListsBase + DL_CROSSHAIR, GL_COMPILE);
     glPushMatrix();
-    //draw_crosshair();
+    draw_crosshair();
     glPopMatrix();
     glEndList();
     glNewList(DisplayListsBase + DL_BALL, GL_COMPILE);
@@ -530,6 +536,7 @@ void mouse(int button, int state, int x, int y)
         m.angle = compute_angle(CentreX, CentreY, CentreX, CentreY); //compute_angle(CentreX, CentreY, CursorX, CursorY)
         m.timerX = 0;
         m.timerY = 0;
+        m.ballTimer = clock();
         balls1.push_back(m);
     }
 }
