@@ -133,49 +133,61 @@ void draw_line() {
     glVertex2f(0, 5);
     glVertex2f(200, 5); //x-axis
     glEnd();
+    //graph lines
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 10);
-    glVertex2f(5, 10);
+    glVertex2f(WindowWidth, 10);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 15);
-    glVertex2f(5, 15);
+    glVertex2f(WindowWidth, 15);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 20);
-    glVertex2f(5, 20);
+    glVertex2f(WindowWidth, 20);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 25);
-    glVertex2f(5, 25);
+    glVertex2f(WindowWidth, 25);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 30);
-    glVertex2f(5, 30);
+    glVertex2f(WindowWidth, 30);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 35);
-    glVertex2f(5, 35);
+    glVertex2f(WindowWidth, 35);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 40);
-    glVertex2f(5, 40);
+    glVertex2f(WindowWidth, 40);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 45);
-    glVertex2f(5, 45);
+    glVertex2f(WindowWidth, 45);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 50);
-    glVertex2f(5, 50);
+    glVertex2f(WindowWidth, 50);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 55);
-    glVertex2f(5, 55);
+    glVertex2f(WindowWidth, 55);
     glEnd();
     glBegin(GL_LINES);
+    glColor3f(0.5, 0.5, 0.5);
     glVertex2f(2.5, 60);
-    glVertex2f(5, 60);
+    glVertex2f(WindowWidth, 60);
     glEnd();
 }
 
@@ -260,144 +272,96 @@ void draw_scene() {
     glColor3f(1, 1, 1);
     drawText(textF.data(), textF.size(), 175, 20); //text position
 
-// graph horizontal lines
+// graph values 
     double y_val = 90;
     string text5;
-    text5 = "5"; //text output
+    text5 = "50"; //text output
     glColor3f(1, 1, 1);
     drawText(text5.data(), text5.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-
-    y_val = 132.5;
+    y_val = 133;
     string text10;
-    text10 = "10"; //text output
+    text10 = "100"; //text output
     glColor3f(1, 1, 1);
     drawText(text10.data(), text10.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 175;
+    y_val = 176;
     string text15;
-    text15 = "15"; //text output
+    text15 = "150"; //text output
     glColor3f(1, 1, 1);
     drawText(text15.data(), text15.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 217.5;
+    y_val = 219;
     string text20;
-    text20 = "20"; //text output
+    text20 = "200"; //text output
     glColor3f(1, 1, 1);
     drawText(text20.data(), text20.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 260;
+    y_val = 262;
     string text25;
-    text25 = "25"; //text output
+    text25 = "250"; //text output
     glColor3f(1, 1, 1);
     drawText(text25.data(), text25.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 302.5;
+    y_val = 305;
     string text30;
-    text30 = "30"; //text output
+    text30 = "300"; //text output
     glColor3f(1, 1, 1);
     drawText(text30.data(), text30.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 345;
+    y_val = 348;
     string text35;
-    text35 = "35"; //text output
+    text35 = "350"; //text output
     glColor3f(1, 1, 1);
     drawText(text35.data(), text35.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 387.5;
+    y_val = 391;
     string text40;
-    text40 = "40"; //text output
+    text40 = "400"; //text output
     glColor3f(1, 1, 1);
     drawText(text40.data(), text40.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 430;
+    y_val = 434;
     string text45;
-    text45 = "45"; //text output
+    text45 = "450"; //text output
     glColor3f(1, 1, 1);
     drawText(text45.data(), text45.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 472.5;
+    y_val = 477;
     string text50;
-    text50 = "50"; //text output
+    text50 = "500"; //text output
     glColor3f(1, 1, 1);
     drawText(text50.data(), text50.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
 
-    y_val = 515;
+    y_val = 520;
     string text55;
-    text55 = "55"; //text output
+    text55 = "550"; //text output
     glColor3f(1, 1, 1);
     drawText(text55.data(), text55.size(), 7.5, y_val); //text position
-    glBegin(GL_LINES);
-    glColor3f(0.5, 0.5, 0.5);
-    glVertex2f(50, y_val * 1.5);
-    glVertex2f(WindowWidth, y_val * 1.5);
-    glEnd();
+
+    y_val = 570;
+    string textY;
+    textY = "Y"; //text output
+    glColor3f(1, 1, 1);
+    drawText(textY.data(), textY.size(), 15, y_val); //text position
+
+
 
     if (paused) {
         string textPause;
         textPause = "PAUSED"; //text output
         glColor3f(1, 0, 0);
-        drawText(textPause.data(), textPause.size(), 400, 300); //text position 
+        drawText(textPause.data(), textPause.size(), 400, 290); //text position 
         string textUnPause;
         textUnPause = "Press 'P' to unpause."; //text output
         glColor3f(1, 1, 1);
-        drawText(textUnPause.data(), textUnPause.size(), 360, 285); //text position 
+        drawText(textUnPause.data(), textUnPause.size(), 360, 275); //text position 
         stringstream buffer;
 
-        for (auto i = balls1.begin(); i != balls1.end(); i++) 
+        for (auto i = balls1.begin(); i != balls1.end(); i++)
         {
             buffer << fixed << setprecision(2) << "Time per bounce: " << (i->timerY) * 0.01 << "s" //cout til string
-                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY << ")"
+                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY-60 << ")"
                 << " | Vel x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
             string output = buffer.str();
             glColor3f(1, 0, 0);
@@ -454,12 +418,12 @@ void draw_scene() {
                 to_erase.push_back(i);
 
 
-            cout << fixed << setprecision(2) << "Time:" << ( i->timerY) * 0.01 << "s" //print til console
-                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY << ")"
+            cout << fixed << setprecision(2) << "Time:" << (i->timerY) * 0.01 << "s" //print til console
+                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY-67 << ")"
                 << " | Vel x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)" << endl;
             stringstream buffer;
-            buffer << fixed << setprecision(2) << "Time per bounce: " << ( i->timerY) * 0.01 << "s" //cout til string
-                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY << ")"
+            buffer << fixed << setprecision(2) << "Time per bounce: " << (i->timerY) * 0.01 << "s" //cout til string
+                << " | Pos: (x = " << i->ballX << ", y = " << i->ballY-67 << ")"
                 << " | Vel x, y: (" << i->velocityX << " m/s, " << i->velocityY << " m/s)";
             string output = buffer.str();
             glColor3f(1, 0, 0);
